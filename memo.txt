@@ -33,7 +33,8 @@ Git 사용법
 - [> git diff] : add 전의 파일에 대하여 변경 사항 출력
 
 # 변경 사항 되돌리기(commit 취소)
-
+- [> git reset --hard (버전 ID)] : 버전 ID 상태로 돌아감
+- [> git revert (버전 ID)] : 버전 ID 내용을 취소하고 새로운 버전을 생성함
 
 
 
