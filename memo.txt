@@ -26,3 +26,16 @@ Git 사용법
 - [> git commit]
 - [> git commit -m "메시지(로그)"]
 
+# git 수정 정보 확인
+- [> git log]
+- [> git log -p] : 로그에서 출력되는 버전 간의 차이점 출력
+- [> git diff (버전 ID)..(버전2 ID)] : 버전 간의 차이점 비교 출력
+- [> git diff] : add 전의 파일에 대하여 변경 사항 출력
+
+# 변경 사항 되돌리기(commit 취소)
+
+
+
+
+
+
