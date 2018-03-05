@@ -1,0 +1,28 @@
+Git 사용법
+
+# git 설치
+- https://git-scm.com 설치
+- 설치 시 [Configuring the line ending conversions]에서 2번째 선택
+- 설치 후 cmd / git bash에서 [> git] 입력하여 명령어 출력 확인
+
+# 사용자 등록
+- 버전 배포 시 사용자 정보 출력(최초 1회 설정)
+- [> git config --global user.name "이름"]
+- [> git config --global user.email "이메일"]
+
+# 현재 디렉토리를 git 저장소로 등록
+- [> git init]
+
+# git 변경 사항 확인
+- [> git status]
+
+# git 변경 흐름
+- f.txt --(add)--> stage --(commit)--> repository
+
+# 수정 사항 stage에 반영
+- [> git add (파일)]
+
+# stage 내용 repository에 반영
+- [> git commit]
+- [> git commit -m "메시지(로그)"]
+
