@@ -40,7 +40,7 @@ Git 사용법
 - [> git reset (파일)]
 : Staging area에서 Working area로 상태 변경(Unstage 상태로 변경, add 취소), 변경 사항은 유지
 - [> git checkout -- (파일)]
-: Staging 상태에서 또 수정한 경우 이전 staging 상태(내용)으로 변경
+: Working area에서 Staging area로 상태(내용)으로 변경
 - [> git checkout HEAD -- (파일)]
 : 현재 branch에서의 마지막 commit 상태(HEAD)로 내용/상태 변경
 - [> git reset HEAD^]
