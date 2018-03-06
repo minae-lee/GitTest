@@ -9,7 +9,7 @@ Git 사용법
 - 버전 배포 시 사용자 정보 출력(최초 1회 설정)
 - [> git config --global user.name "이름"]
 - [> git config --global user.email "이메일"]
-- [> git config --list] : 설정 정보 확인
+- [> git config --global --list] : 설정 정보 확인
 
 # 현재 디렉토리를 git 저장소로 등록
 - [> git init]
@@ -32,9 +32,12 @@ Git 사용법
 # git 변경 흐름
 - f.txt --(add)--> stage --(commit)--> repository
 
-# 수정 사항 stage에 반영
+# 파일을 staging 영역에 추가/반영
 - [> git add (파일)]
 - [> git add *]
+
+# 파일을 staging 영역에서 제거(add 취소)
+- [> git rm --cached (파일)]
  
 # stage 내용 repository에 반영
 - [> git commit]
