@@ -25,10 +25,14 @@ Git 사용법
 
 # 수정 사항 stage에 반영
 - [> git add (파일)]
+- [> git add *]
 
 # stage 내용 repository에 반영
 - [> git commit]
 - [> git commit -m "메시지(로그)"]
+
+# 지역 branch 변경 사항을 원격 branch에 반영
+- [> git push origin (branch 명)]
 
 # git 수정 정보 확인
 - [> git log]
@@ -52,9 +56,11 @@ Git 사용법
 - [> git branch -a] : 지역, 원격 브랜치 목록 출력
 
 # branch 생성
-- [> git branch (브랜치명)]
+- [> git branch (branch 명)]
+- [> git checkout -b (branch 명)] : branch 생성 및 이동
 
 # branch 변경
-- [> git checkout (이동할 브랜치명)]
+- [> git checkout (이동할 branch 명)]
+
 
 
