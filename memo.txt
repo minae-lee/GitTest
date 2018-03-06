@@ -19,6 +19,15 @@ Git 사용법
 
 # git 변경 사항 확인
 - [> git status]
+- [> git status -s] / [> git status --short] : 간단한 변경 내용 출력
+  *. 출력 결과 보는 법
+  (staging area 상태/working tree 상태)
+  > git status -s
+   M f1.txt => staged 상태가 아님/ 수정된 상태
+  MM f2.txt => staged 상태 / 수정된 상태(staged 상태에서 또 수정함)
+  A  f3.txt => staged 상태 / 새로 추가된 파일
+  ?? f4.txt => 아직 추적되지 않는 파일(새 파일)
+  M  f5.txt => staged 상태 / 수정된 상태
 
 # git 변경 흐름
 - f.txt --(add)--> stage --(commit)--> repository
@@ -26,7 +35,7 @@ Git 사용법
 # 수정 사항 stage에 반영
 - [> git add (파일)]
 - [> git add *]
-
+ 
 # stage 내용 repository에 반영
 - [> git commit]
 - [> git commit -m "메시지(로그)"]
