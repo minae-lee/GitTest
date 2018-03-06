@@ -9,9 +9,13 @@ Git 사용법
 - 버전 배포 시 사용자 정보 출력(최초 1회 설정)
 - [> git config --global user.name "이름"]
 - [> git config --global user.email "이메일"]
+- [> git config --list] : 설정 정보 확인
 
 # 현재 디렉토리를 git 저장소로 등록
 - [> git init]
+
+# 저장소 복제
+- [> git clone (저장소 url)]
 
 # git 변경 사항 확인
 - [> git status]
@@ -42,6 +46,15 @@ Git 사용법
 3. 출력 결과를 [github settings > ssh keys]에 입력
 4. [> ssh git@github.com] 입력하여 등록 확인
 
+# branch 목록 출력
+- [> git branch] : 지역 브랜치 목록 출력
+- [> git branch -r] : 원격 브랜치 목록 출력
+- [> git branch -a] : 지역, 원격 브랜치 목록 출력
 
+# branch 생성
+- [> git branch (브랜치명)]
+
+# branch 변경
+- [> git checkout (이동할 브랜치명)]
 
 
