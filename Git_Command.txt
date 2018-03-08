@@ -1,9 +1,9 @@
 Git 사용법
 
 # git 설치
-- https://git-scm.com 설치
+- https://git-scm.com 접속 후 설치
 - 설치 시 [Configuring the line ending conversions]에서 2번째 선택
-- 설치 후 cmd / git bash에서 [> git] 입력하여 명령어 출력 확인
+- 설치 후 cmd나 git bash에서 [> git] 입력하여 명령어 출력 확인
 
 # 사용자 등록
 - 버전 배포 시 사용자 정보 출력(최초 1회 설정)
@@ -14,14 +14,13 @@ Git 사용법
 # 현재 디렉토리를 git 저장소로 등록
 - [> git init]
 
-# 저장소 복제
-- [> git clone (저장소 url)]
+# 원격 저장소 복제
+- [> git clone (원격 저장소 url)]
 
 # git 변경 사항 확인
 - [> git status]
 - [> git status -s] / [> git status --short] : 간단한 변경 내용 출력
-  *. 출력 결과 보는 법
-  (staging area 상태/working tree 상태)
+  *. 출력 결과 보는 법(staging area 상태/working tree 상태)
   > git status -s
    M f1.txt => staged 상태가 아님/ 수정된 상태
   MM f2.txt => staged 상태 / 수정된 상태(staged 상태에서 또 수정함)
@@ -29,33 +28,42 @@ Git 사용법
   ?? f4.txt => 아직 추적되지 않는 파일(새 파일)
   M  f5.txt => staged 상태 / 수정된 상태
 
-# git 변경 흐름
+# git 흐름
 - f.txt --(add)--> stage area[index] --(commit)--> repository[Head]
 
-# 파일을 staging area에 반영
-- [> git add (파일)]
-- [> git add *]
+# 변경사항을 staging area에 반영
+- [> git add A.txt] : 지정된 파일만 staging area에 반영
+- [> git add *], [> git add .] : 변경된 모든 파일을 staging area에 반영(unstracked, stracked)
+- [> git add -p] : 변경된 파일의 수정 부분을 확인하면서 staging area에 반영할지 선택(stracked)
 
 # 변경 사항 되돌리기
-- [> git reset (파일)]
+- [> git reset A.txt], [> git reset -- A.txt]
 : Staging area에서 Working area로 상태 변경(Unstage 상태로 변경, add 취소), 변경 사항은 유지
-- [> git checkout -- (파일)]
-: Working area에서 Staging area로 상태(내용)으로 변경
-- [> git checkout HEAD -- (파일)]
-: 현재 branch에서의 마지막 commit 상태(HEAD)로 내용/상태 변경
+- [> git checkout -- A.txt]
+: Working area에서 Staging area로 상태와 내용 변경
+- [> git checkout HEAD -- A.txt]
+: 현재 branch에서의 마지막 commit(HEAD)로 상태와 내용 변경
 - [> git reset HEAD^]
-: 이전 HEAD로 변경(commit 취소, commit 후 push 전 유용)
-- [> git clean -f]
-: untracked 파일 삭제
-- [> gir clean -f -d]
-: untracked 파일/폴더 삭제
+: 이전 commit(HEAD)로 상태와 내용 변경(commit 취소, commit 후 push 전 유용)
 
-# stage 내용 repository에 반영
+# Untracked 파일/폴더 삭제
+- [> git clean]
+  *. 주요 옵션 
+  - [> git clean -f] : 기본 옵션(생략 가능), 파일 삭제
+  - [> git clean -d] : 폴더 삭제
+  - [> git clean -x] : ignore 룰이 적용된 파일을 포함하여 삭제
+  - [> git clean -X] : ignore 룰이 적용된 파일만 삭제
+
+# staging area에 있는 작업 내용 repository에 반영
 - [> git commit]
-- [> git commit -m "메시지(로그)"]
+- [> git commit -m "메시지"] : 에디터 실행 없이 메시지 입력
+- [> git commit -s -m "메시지"], [> git commit --signoff -m "메시지"] : commit 메시지에 user.name과 user.email이 자동으로 추가 됨
+- [> git commit -a -m "메시지"] : tracked 상태의 파일을 자동으로 staging area에 반영하고 repogitory에 반영함(add 과정 포함)
 
-# 지역 branch 변경 사항을 원격 branch에 반영
-- [> git push origin (branch 명)]
+# 지역 저장소의 데이터를 원격 저장소에 반영
+- [> git push] : origin 원격 저장소에 현재 브랜치 내용 반영
+- [> git push origin A] : origin에 A 브랜치 반영, 원격 저장소에 A 브랜치가 없으면 새로 생성
+- [> git push --set-upstream origin master] : 로컬 저장소를 init으로 생성했거나, 로컬에서 새로 생성한 브랜치일 때 브랜치 반영
 
 # git 수정 정보 확인
 - [> git log]
@@ -77,13 +85,45 @@ Git 사용법
 - [> git branch] : 지역 브랜치 목록 출력
 - [> git branch -r] : 원격 브랜치 목록 출력
 - [> git branch -a] : 지역, 원격 브랜치 목록 출력
+- [> git branch --no-merged] : 현재 브랜치 기준으로 merge 되지 않은 브랜치 목록 출력
+- [> git branch --merged] : 현재 브랜치 기준으로 merge 된 브랜치 목로 출력
 
 # branch 생성
-- [> git branch (branch 명)]
-- [> git checkout -b (branch 명)] : branch 생성 및 이동
+- [> git branch A] : A 브랜치 생성
+- [> git checkout -b A]: branch 생성 및 A 브랜치로 이동
 
-# branch 변경
-- [> git checkout (이동할 branch 명)]
+# branch 이동
+- [> git checkout A] : A 브랜치로 이동
+
+# branch 이름 변경
+- [> git branch -m A B] : branch 이름을 A에서 B로 변경
+
+# branch 삭제
+- [> git branch -d A] : A 브랜치 삭제
+- [> git branch -D A] : 강제 삭제
+
+# branch 병합
+- [> git merge A] : A 브랜치를 현재 브랜치로 병합
+ex) A, B branch 존재, B를 A로 병합
+- 3-ways merge : A와 B 모두 commit 사항이 있으나 서로 충동되지 않은 수정사항임
+- Fast-forward : B만 commit 사항이 있음
+- [> git merge --no-commit A] : commit 없이 A 브랜치 병합
+- [> git cherry-pick (commit ID)] : 지정한 Commit ID의 내용만 반영
+
+# branch 병합 취소
+- [> git reset --hard ORIG_HEAD] : ORIF_HEAD 상태로 변경([> git show ORIG_HEAD] 로 확인)
+# tag 조회
+- [> git tag]
+
+# 병합 시 충돌 했을 경우
+1. [> git mergetool] 을 사용하여 충동 부분 수정
+2. 충돌된 파일 수정 후 add -> commit 
 
 
+# tag 생성
+- [> git tag (tag 명)] : 현재 브랜치의 마지막 commit에 tag 생성(lightweight tag)
+- [> git tag -a (tag 명) -m "메시지"] : 이름, 이메일, 날짜 메시지를 포함하여 tag 생성(annotated tag)
+
+# tag 삭제
+- [> git tag -d (tag 명)]
 
